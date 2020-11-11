@@ -1,6 +1,6 @@
 # Manjaro Setup
 
-teps to configure Manjaro
+Steps to configure Manjaro
 
 ## Tools
 install neo-vim
@@ -9,7 +9,7 @@ sudo pacman -S neovim
 ```
 ## ZSH
 ```
-sudo -S zsh zsh-completions
+sudo pacman -S zsh zsh-completions
 ```
 
 Install Oh my Zsh, a tool to configure zsh shell easily
@@ -53,7 +53,7 @@ Make zsh the default shell
 chsh -s /bin/zsh
 ```
 
-Restart computer
+Log out and log in. "The shell defined in the /etc/passwd file is your login shell :-) So you need to log in actually for that."
 
 ## Git
 ```
