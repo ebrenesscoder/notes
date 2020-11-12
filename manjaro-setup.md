@@ -80,4 +80,7 @@ Install aws-vault
 ```
 sudo pacman -S aws-vault
 ```
-
+### Terraform
+```
+sudo pacman -S terraform
+```
