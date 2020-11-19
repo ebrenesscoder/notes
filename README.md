@@ -41,3 +41,18 @@ Pay attention when selecting the installation method (manual particion, delete d
 Select the option without UEFI when choosing the USB driver before installing Manjaro
 this will install Manjaro with BIOS mode.
 ```
+
+# 2020-11-18
+## CASE
+We needed an apache vhost config that proxies the urls matching /static-assets/files* but at the same time we wanted NOT to proxy /static-assets/<anything different than files>
+## SOLUTION
+`ProxyPass /static-assets/(?!files/).* !`
+ 
+ Another important configs are:
+ `Header set X-Frame-Options: "SAMEORIGIN"`
+ 
+ If you are seeing urls with localhost
+ `ProxyPreserveHost On`
+ 
+ 
+
