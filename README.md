@@ -2,6 +2,7 @@
 
 ## 2020-10-19
 ### ERROR
+`AWS` `RDS`
 ```
 Access denied for user 'root'@'%' to database 'crafter'
 Query is : GRANT ALL PRIVILEGES ON crafter.* TO 'crafter'@'localhost'
@@ -23,6 +24,8 @@ on the crafter db.
 
 ## 2020-11-11
 ### ERROR
+`GRUB` `Manjaro`
+
 ```
 When running sudo os-prober the Windows volume didn't show up.
 I tried editing /etc/default/grub file and I was able to show the GRUB menu, but it only showed Manjaro option
@@ -44,6 +47,7 @@ this will install Manjaro with BIOS mode.
 
 # 2020-11-18
 ## CASE
+`apache`
 We needed an apache vhost config that proxies the urls matching /static-assets/files* but at the same time we wanted NOT to proxy /static-assets/<anything different than files>
 ## SOLUTION
 `ProxyPass /static-assets/(?!files/).* !`
