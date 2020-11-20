@@ -209,9 +209,9 @@ Amplify.DataStore.query(
  ## Connect to the cloud
  Now that your have DataStore persisting data locally, in the next step you’ll connect it to the cloud. With a couple of commands, you’ll create an AWS AppSync API and configure DataStore to synchronize its data to it.
 
+Make sure you have configure an aws profile.
 
-Run the following command in the same folder where `amplify` folder is
-`amplify configure`
+Edit the file `amplify-gradle-config.json` and change the profile value with yours and the `envName` to `prod`
 
 
  
