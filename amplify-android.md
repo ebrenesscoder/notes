@@ -228,3 +228,36 @@ Amplify.DataStore.observe(Todo.class,
 
 In the Gradle Task dropdown menu in the toolbar, select app and run the application. This will synchronize the existing local Todo items to the cloud. DataStore.observe will log a message when new items are synchronized locally.
 When doing this sync a new API will appear in the App Sync console.
+
+``` graphql
+ query GetTodos {
+     listTodos {
+         items {
+             id
+             name
+             priority
+             description
+         }
+     }
+ }
+ ```
+ 
+ 
+ ``` graphql
+  mutation CreateTodo {
+     createTodo(
+         input: {
+             name: "Tidy up the office"
+             description: "Organize books, vacuum, take out the trash"
+             priority: NORMAL
+         }
+     ) {
+         id
+         name
+         description
+         priority
+         _version
+         _lastChangedAt
+     }
+ }
+ ```
