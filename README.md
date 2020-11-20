@@ -63,7 +63,7 @@ We needed an apache vhost config that proxies the urls matching /static-assets/f
  ## CASE
  - There is a S3 bucket in the aws account `A`
  - There is an Administrator user `user_A` in the same account
- - An external program uses a second user `user_B` which belongs to another Account `B`
+ - An external program uses a second user `user_B` which belongs to another Account `B` to push data into the bucket.
  
  # CAUSE
  - `user_A` cannot access the files on the S3 bucket because the files were copied using `user_B`. so the files/objects belong to the account `B`.
