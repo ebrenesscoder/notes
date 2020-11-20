@@ -83,7 +83,7 @@ type Todo @model {
 Next, generate the classes for these models. In Android Studio, click the Gradle Task dropdown in the toolbar and select `modelgen`. This generates java classes, like `Todo.java`, `Priority.java (enum)`
 
 ## Configure DataStore
-Create a new class next to `MainActivity` called `MyAmplifyApplication`
+Create a new class next to `MainActivity` and name it `MyAmplifyApplication`
 Paste the following code to initialize amplify
 ``` java
  public class MyAmplifyApplication extends Application {
@@ -102,3 +102,20 @@ Paste the following code to initialize amplify
      }
  }
 ```
+Open `AndroidManifest.xml` to configure your application.
+Add `xmlns:tools="http://schemas.android.com/tools"` to the `manifest` node.
+Add the `android:name` and `tools:replace` attributes to the `application` node:
+
+```xml
+<application
+   android:name=".MyAmplifyApplication"
+   tools:replace="android:name"
+   ...
+```
+
+In the Gradle Task dropdown menu in the toolbar, select app, and run the application. In logcat, you’ll see a log line indicating success:
+```
+ com.example.todo I/Tutorial: Initialized Amplify
+ ```
+ 
+
