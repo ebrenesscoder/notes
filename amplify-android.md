@@ -213,5 +213,17 @@ Make sure you have configure an aws profile.
 
 Edit the file `amplify-gradle-config.json` and change the profile value with yours and the `envName` to `prod`
 
+Next, push your new API to AWS. In Android Studio, click the Gradle Task dropdown in the toolbar and select amplifyPush.
 
- 
+Modify your initialization code to initialize API in order to connect to the backend. Open `MainActivity` and remove all of the previous code you entered that saved and queried for Todo items. Now, add the following code to the bottom of the `onCreate()` method:
+
+``` java
+Amplify.DataStore.observe(Todo.class,
+       started -> Log.i("Tutorial", "Observation began."),
+       change -> Log.i("Tutorial", change.item().toString()),
+       failure -> Log.e("Tutorial", "Observation failed.", failure),
+       () -> Log.i("Tutorial", "Observation complete.")
+);
+```
+
+In the Gradle Task dropdown menu in the toolbar, select app and run the application. This will synchronize the existing local Todo items to the cloud. DataStore.observe will log a message when new items are synchronized locally.
