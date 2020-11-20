@@ -117,5 +117,94 @@ In the Gradle Task dropdown menu in the toolbar, select app, and run the applica
 ```
  com.example.todo I/Tutorial: Initialized Amplify
  ```
- 
+ ## Create a Todo
+ Next, you’ll create a Todo and save it to DataStore.
+ Open `MainActivity` and add the following code to the bottom of the `onCreate()` method:
+ ```java
+ Todo item = Todo.builder()
+       .name("Build Android application")
+       .description("Build an Android application using Amplify")
+       .build();
+```
 
+Below that, add the code to save the item to DataStore:
+
+ ```Amplify.DataStore.save(
+         item,
+         success -> Log.i("Tutorial", "Saved item: " + success.item().getName()),
+         error -> Log.e("Tutorial", "Could not save item to DataStore", error)
+ ); 
+ ```
+
+ ## Query Todos
+ Now that you have some data in DataStore, you can run queries to retrieve those records.
+ 
+ ```java
+ Amplify.DataStore.query(
+       Todo.class,
+       todos -> {
+           while (todos.hasNext()) {
+               Todo todo = todos.next();
+
+               Log.i("Tutorial", "==== Todo ====");
+               Log.i("Tutorial", "Name: " + todo.getName());
+
+               if (todo.getPriority() != null) {
+                   Log.i("Tutorial", "Priority: " + todo.getPriority().toString());
+               }
+
+               if (todo.getDescription() != null) {
+                   Log.i("Tutorial", "Description: " + todo.getDescription());
+               }
+           }
+       },
+       failure -> Log.e("Tutorial", "Could not query DataStore", failure)
+);
+```
+
+Queries can also contain predicate filters. These will query for specific objects matching a certain condition.
+
+The following predicates are supported:
+
+Strings
+
+eq ne le lt ge gt contains notContains beginsWith between
+
+Numbers
+
+`eq` `ne` `le` `lt` `ge` `gt` `between`
+
+Lists
+
+`contains` `notContains`
+
+To use a predicate, pass an additional argument into your query. For example, the following code queries for all high priority items:
+
+``` java
+Amplify.DataStore.query(
+       Todo.class,
+       Where.matches(
+           Todo.PRIORITY.eq(Priority.HIGH)
+       ),
+       todos -> {
+           while (todos.hasNext()) {
+               Todo todo = todos.next();
+
+               Log.i("Tutorial", "==== Todo ====");
+               Log.i("Tutorial", "Name: " + todo.getName());
+
+               if (todo.getPriority() != null) {
+                   Log.i("Tutorial", "Priority: " + todo.getPriority().toString());
+               }
+
+               if (todo.getDescription() != null) {
+                   Log.i("Tutorial", "Description: " + todo.getDescription());
+               }
+           }
+       },
+       failure -> Log.e("Tutorial", "Could not query DataStore", failure)
+);
+```
+
+ 
+ 
