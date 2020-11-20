@@ -80,4 +80,25 @@ type Todo @model {
   description: String
 }
 ```
-Next, generate the classes for these models. In Android Studio, click the Gradle Task dropdown in the toolbar and select `modelgen`
+Next, generate the classes for these models. In Android Studio, click the Gradle Task dropdown in the toolbar and select `modelgen`. This generates java classes, like `Todo.java`, `Priority.java (enum)`
+
+## Configure DataStore
+Create a new class next to `MainActivity` called `MyAmplifyApplication`
+Paste the following code to initialize amplify
+``` java
+ public class MyAmplifyApplication extends Application {
+   @Override
+     public void onCreate() {
+         super.onCreate();
+         try {
+             // Amplify.addPlugin(new AWSApiPlugin());
+             Amplify.addPlugin(new AWSDataStorePlugin());
+             Amplify.configure(getApplicationContext());
+
+             Log.i("Tutorial", "Initialized Amplify");
+         } catch (AmplifyException e) {
+             Log.e("Tutorial", "Could not initialize Amplify", e);
+         }
+     }
+ }
+```
