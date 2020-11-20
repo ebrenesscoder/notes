@@ -32,3 +32,24 @@ allprojects {
 // ADD THIS
 apply plugin: 'com.amplifyframework.amplifytools'
 ```
+
+Under Gradle Scripts, open `build.gradle (Module: app)`.
+``` gradle
+android {
+    compileOptions {
+        // ADD THIS
+        // to allow your application to make use of Java 8 features like Lambda expressions
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // ADD THESE
+    implementation 'com.amplifyframework:aws-api:1.4.1'
+    implementation 'com.amplifyframework:aws-datastore:1.4.1'
+
+    // ADD THIS
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
+}```
