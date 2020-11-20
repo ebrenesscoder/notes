@@ -52,6 +52,26 @@ dependencies {
 
     // ADD THIS
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
-}```
-
+}
+```
 Run Gradle Sync
+
+## Generate model files
+Switch to project view instead of Android view
+Expand the ToDo folder and open the schema file located at `amplify > backend > api > amplifyDatasource > schema.graphql`.
+
+``` graphqk
+enum Priority {
+  LOW
+  NORMAL
+  HIGH
+}
+
+type Todo @model {
+  id: ID!
+  name: String!
+  priority: Priority
+  description: String
+}
+```
+
