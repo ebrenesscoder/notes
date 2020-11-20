@@ -36,6 +36,12 @@ apply plugin: 'com.amplifyframework.amplifytools'
 Under Gradle Scripts, open `build.gradle (Module: app)`.
 ``` gradle
 android {
+    defaultConfig {
+      ...
+      // ASS THIS
+      multiDexEnabled true
+      ...
+    }
     compileOptions {
         // ADD THIS
         // to allow your application to make use of Java 8 features like Lambda expressions
@@ -60,7 +66,7 @@ Run Gradle Sync
 Switch to project view instead of Android view
 Expand the ToDo folder and open the schema file located at `amplify > backend > api > amplifyDatasource > schema.graphql`.
 
-``` graphqk
+``` graphql
 enum Priority {
   LOW
   NORMAL
@@ -74,4 +80,4 @@ type Todo @model {
   description: String
 }
 ```
-
+Next, generate the classes for these models. In Android Studio, click the Gradle Task dropdown in the toolbar and select `modelgen`
