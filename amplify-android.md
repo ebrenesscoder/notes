@@ -103,6 +103,54 @@ input TimestampConfiguration {
     updatedAt: String
 }
 
+directive @connection(keyName: String, fields: [String!]) on FIELD_DEFINITION
+directive @key(fields: [String!]!, name: String, queryField: String) on OBJECT
+directive @function(name: String!, region: String) on FIELD_DEFINITION
+# Streams data from DynamoDB to Elasticsearch and exposes search capabilities.
+directive @searchable(queries: SearchableQueryMap) on OBJECT
+input SearchableQueryMap { search: String }
+directive @versioned(versionField: String = "version", versionInput: String = "expectedVersion") on OBJECT
+
+directive @http(method: HttpMethod, url: String!, headers: [HttpHeader]) on FIELD_DEFINITION
+enum HttpMethod { PUT POST GET DELETE PATCH }
+input HttpHeader {
+    key: String
+    value: String
+}
+
+directive @predictions(actions: [PredictionsActions!]!) on FIELD_DEFINITION
+enum PredictionsActions {
+    identifyText # uses Amazon Rekognition to detect text
+    identifyLabels # uses Amazon Rekognition to detect labels
+    convertTextToSpeech # uses Amazon Polly in a lambda to output a presigned url to synthesized speech
+    translateText # uses Amazon Translate to translate text from source to target language
+}
+
+# When applied to a type, augments the application with
+# owner and group-based authorization rules.
+directive @auth(rules: [AuthRule!]!) on OBJECT | FIELD_DEFINITION
+input AuthRule {
+    allow: AuthStrategy!
+    provider: AuthProvider
+    ownerField: String # defaults to "owner" when using owner auth
+    identityClaim: String # defaults to "username" when using owner auth
+    groupClaim: String # defaults to "cognito:groups" when using Group auth
+    groups: [String]  # Required when using Static Group auth
+    groupsField: String # defaults to "groups" when using Dynamic Group auth
+    operations: [ModelOperation] # Required for finer control
+
+    # The following arguments are deprecated. It is encouraged to use the 'operations' argument.
+    queries: [ModelQuery]
+    mutations: [ModelMutation]
+}
+enum AuthStrategy { owner groups private public }
+enum AuthProvider { apiKey iam oidc userPools }
+enum ModelOperation { create update delete read }
+
+# The following objects are deprecated. It is encouraged to use ModelOperations.
+enum ModelQuery { get list }
+enum ModelMutation { create update delete }
+
 ```
 
 Expand the ToDo folder and open the schema file located at `amplify > backend > api > amplifyDatasource > schema.graphql`.
