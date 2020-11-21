@@ -65,9 +65,9 @@ Run Gradle Sync
 ## Generate model files
 Switch to project view instead of Android view
 
-Create a folder named `graphql` `under /app/src/main` next to the `java` folder
+Create a folder named `graphql` under `/app/src/main` next to the `java` folder
 
-Create a file named `aws-directives` in the folder created in the last step.
+Create a file named `aws-directives.graphql` in the folder created in the last step.
 
 Paste this content into the file
 
