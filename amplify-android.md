@@ -170,7 +170,8 @@ In the Gradle Task dropdown menu in the toolbar, select app, and run the applica
 
 Below that, add the code to save the item to DataStore:
 
- ```Amplify.DataStore.save(
+ ``` java
+ Amplify.DataStore.save(
          item,
          success -> Log.i("Tutorial", "Saved item: " + success.item().getName()),
          error -> Log.e("Tutorial", "Could not save item to DataStore", error)
