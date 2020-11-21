@@ -64,6 +64,47 @@ Run Gradle Sync
 
 ## Generate model files
 Switch to project view instead of Android view
+
+Create a folder named `graphql` `under /app/src/main` next to the `java` folder
+
+Create a file named `aws-directives` in the folder created in the last step.
+
+Paste this content into the file
+
+``` graphql
+directive @model(
+    queries: ModelQueryMap
+    mutations: ModelMutationMap
+    subscriptions: ModelSubscriptionMap
+    timestamps: TimestampConfiguration
+) on OBJECT
+input ModelMutationMap {
+    create: String
+    update: String
+    delete: String
+}
+input ModelQueryMap {
+    get: String
+    list: String
+}
+input ModelSubscriptionMap {
+    onCreate: [String]
+    onUpdate: [String]
+    onDelete: [String]
+    level: ModelSubscriptionLevel
+}
+enum ModelSubscriptionLevel {
+    off
+    public
+    on
+}
+input TimestampConfiguration {
+    createdAt: String
+    updatedAt: String
+}
+
+```
+
 Expand the ToDo folder and open the schema file located at `amplify > backend > api > amplifyDatasource > schema.graphql`.
 
 ``` graphql
