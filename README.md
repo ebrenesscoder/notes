@@ -68,3 +68,12 @@ We needed an apache vhost config that proxies the urls matching /static-assets/f
  # CAUSE
  - `user_A` cannot access the files on the S3 bucket because the files were copied using `user_B`. so the files/objects belong to the account `B`.
 
+# 2020-12-09
+## ERROR
+`terraform`
+Error: Get "http://localhost/api/v1/namespaces/kube-system/configmaps/aws-auth": dial tcp [::1]:80: connect: connection refused
+
+## SOLUTION
+```sh
+tf taint kubernetes_config_map.aws_auth
+```
