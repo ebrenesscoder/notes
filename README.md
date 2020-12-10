@@ -75,5 +75,5 @@ Error: Get "http://localhost/api/v1/namespaces/kube-system/configmaps/aws-auth":
 
 ## SOLUTION
 ```sh
-tf taint kubernetes_config_map.aws_auth
+tf state rm kubernetes_config_map.aws_auth
 ```
