@@ -2,6 +2,7 @@
 
 ## 2020-10-19
 ### ERROR
+`AWS` `RDS`
 ```
 Access denied for user 'root'@'%' to database 'crafter'
 Query is : GRANT ALL PRIVILEGES ON crafter.* TO 'crafter'@'localhost'
@@ -23,6 +24,8 @@ on the crafter db.
 
 ## 2020-11-11
 ### ERROR
+`GRUB` `Manjaro`
+
 ```
 When running sudo os-prober the Windows volume didn't show up.
 I tried editing /etc/default/grub file and I was able to show the GRUB menu, but it only showed Manjaro option
@@ -40,4 +43,37 @@ Pay attention when selecting the installation method (manual particion, delete d
 ```
 Select the option without UEFI when choosing the USB driver before installing Manjaro
 this will install Manjaro with BIOS mode.
+```
+
+# 2020-11-18
+## CASE
+`apache`
+We needed an apache vhost config that proxies the urls matching /static-assets/files* but at the same time we wanted NOT to proxy /static-assets/<anything different than files>
+## SOLUTION
+`ProxyPass /static-assets/(?!files/).* !`
+ 
+ Another important configs are:
+ `Header set X-Frame-Options: "SAMEORIGIN"`
+ 
+ If you are seeing urls with localhost
+ `ProxyPreserveHost On`
+ 
+ # 2020-11-20
+ `AWS` `S3`
+ ## CASE
+ - There is a S3 bucket in the aws account `A`
+ - There is an Administrator user `user_A` in the same account
+ - An external program uses a second user `user_B` which belongs to another Account `B` to push data into the bucket.
+ 
+ # CAUSE
+ - `user_A` cannot access the files on the S3 bucket because the files were copied using `user_B`. so the files/objects belong to the account `B`.
+
+# 2020-12-09
+## ERROR
+`terraform`
+Error: Get "http://localhost/api/v1/namespaces/kube-system/configmaps/aws-auth": dial tcp [::1]:80: connect: connection refused
+
+## SOLUTION
+```sh
+tf state rm kubernetes_config_map.aws_auth
 ```
