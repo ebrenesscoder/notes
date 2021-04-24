@@ -65,7 +65,7 @@ brew install --cask aws-vault
 ```
 
 # python 3
-```sh
+```bash
 brew install pyenv
 pyenv install 3.9.4
 pyenv global 3.9.4
