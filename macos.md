@@ -10,6 +10,11 @@ brew install xz
 xcode-select --install
 ```
 
+To show hidden files:
+```
+defaults write com.apple.Finder AppleShowAllFiles true
+```
+
 # git
 ```
 brew install git
