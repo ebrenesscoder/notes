@@ -1,13 +1,18 @@
 ### brew
 Go to brew.sh
 
-### tools
+### tools and general configurations
 ```sh
 brew install xz
 ```
 
 ```sh
 xcode-select --install
+```
+
+To change the folder where the screenshots are saved
+```
+defaults write com.apple.screencapture location /Users/erickbrenes/Screenshots
 ```
 
 To show hidden files:
@@ -73,6 +78,13 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 ### aws-vault
 ```sh
 brew install --cask aws-vault
+```
+
+```
+# Store AWS credentials for the "jonsmith" profile
+$ aws-vault add jonsmith
+Enter Access Key Id: ABDCDEFDASDASF
+Enter Secret Key: %%%
 ```
 
 ### python 3
