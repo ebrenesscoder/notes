@@ -1,6 +1,15 @@
 # brew
 Go to brew.sh
 
+# tools
+```sh
+brew install xz
+```
+
+```sh
+xcode-select --install
+```
+
 # git
 ```
 brew install git
@@ -32,6 +41,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 Then edit your `~/.zshrc` and set `plugins=(git zsh-completions zsh-syntax-highlighting zsh-autosuggestions)`
 
 # docker
+Go to https://docs.docker.com/docker-for-mac/install/
 
 # kubectl
 ```sh
@@ -39,5 +49,34 @@ brew install kubectl
 ```
 
 # helm
+```sh
+brew install helm
+```
 
+# aws-cli
+```sh
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+```
 
+# aws-vault
+```sh
+brew install --cask aws-vault
+```
+
+# python 3
+```sh
+brew install pyenv
+pyenv install 3.9.4
+pyenv global 3.9.4
+pyenv version
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+```
+
+After that command, our dotfile (.zshrc for zsh or .bash_profile for Bash) should include these lines:
+
+```bash
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+```
