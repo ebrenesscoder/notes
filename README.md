@@ -77,3 +77,20 @@ Error: Get "http://localhost/api/v1/namespaces/kube-system/configmaps/aws-auth":
 ```sh
 tf state rm kubernetes_config_map.aws_auth
 ```
+ 
+ ## Failed to contact API server when waiting for CSINode publishing: Unauthorized
+ FIX: Add the aws-auth config map
+ ```yaml
+ apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::<ACCOUNT_ID>:role/AppProdEKSNode
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+```
