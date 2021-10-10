@@ -99,19 +99,47 @@ Then edit your `~/.zshrc` and set `plugins=(git zsh-completions zsh-syntax-highl
 
 ## Docker
 ```sh
-sudo apt install docker.io
-```
-
-The Docker service needs to be setup to run at startup. To do so, type in each command followed by enter:
-```sh
-sudo systemctl start docker
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
 ```
 
 ```sh
-sudo systemctl enable docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
 ```sh
-docker --version
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+```
+
+```sh
+sudo apt update
+```
+
+```sh
+sudo apt install docker-ce
+```
+
+```sh
+service docker status
+```
+
+Run `docker` without sudo every time.
+
+Si desea evitar escribir sudo al ejecutar el comando docker, agregue su nombre de usuario al grupo docker
+```sh
+sudo usermod -aG docker ${USER}
+```
+
+Para aplicar la nueva membresía de grupo, cierre la sesión del servidor y vuelva a iniciarla o escriba lo siguiente:
+```sh
+su - ${USER}
+```
+
+Confirme que ahora su usuario se agregó al grupo docker escribiendo lo siguiente:
+
+```sh
+id -nG
+```
+
+```sh
 ```
 
