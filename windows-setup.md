@@ -46,25 +46,53 @@ restart
 - Set ubuntu as default in the terminal
 
 - install zsh
+```sh
 sudo apt-get update
+```
+
+```sh
 sudo apt-get install zsh
+```
+
+```sh
 zsh --version
+```
+
+```sh
 chsh -s `which zsh`
+```
 
 restart terminal
-select 2. Populate your ~/.zshrc with the configuration recommended
+select 2. Populate your `~/.zshrc` with the configuration recommended
 
 - install git
+
+```sh
 sudo apt install git
+```
 
 - install oh-my-zsh
+
+```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+```sh
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```
 
 
 - install plugins
+```sh
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
 
-Then edit your ~/.zshrc and set plugins=(git zsh-completions zsh-syntax-highlighting zsh-autosuggestions)
+```sh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+Then edit your `~/.zshrc` and set `plugins=(git zsh-completions zsh-syntax-highlighting zsh-autosuggestions)`
