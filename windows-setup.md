@@ -96,3 +96,22 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ```
 
 Then edit your `~/.zshrc` and set `plugins=(git zsh-completions zsh-syntax-highlighting zsh-autosuggestions)`
+
+## Docker
+```sh
+sudo apt install docker.io
+```
+
+The Docker service needs to be setup to run at startup. To do so, type in each command followed by enter:
+```sh
+sudo systemctl start docker
+```
+
+```sh
+sudo systemctl enable docker
+```
+
+```sh
+docker --version
+```
+
