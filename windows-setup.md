@@ -81,8 +81,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 ```
 
-`!/.zshrc`
+`~/.zshrc`
 ```ZSH_THEME="powerlevel10k/powerlevel10k"```
+
+```p10k configure```
 
 - install plugins
 ```sh
