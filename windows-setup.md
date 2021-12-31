@@ -70,7 +70,7 @@ select 2. Populate your `~/.zshrc` with the configuration recommended
 ```sh
 sudo apt install git
 ```
-
+- Download the recommended font. https://github.com/romkatv/powerlevel10k/blob/master/font.md
 - install oh-my-zsh
 
 ```sh
